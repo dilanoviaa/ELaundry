@@ -1,0 +1,21 @@
+page-welcome {
+    .background {
+        background-image: url('../assets/bg.jpg');
+    }
+
+    .logo {
+      width: 300px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 4em;
+      padding-bottom: 2em;
+    }
+
+    .scroll-content {
+        align-content: center;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        text-align: center;
+    }
+}

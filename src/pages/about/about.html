@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      E-Laundry
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-card>
+    <ion-card-header>
+      Daftar
+    </ion-card-header>
+    <ion-card-content>
+      <form #signupForm="ngForm" novalidate>
+      <ion-list no-line>
+        <ion-item>
+          <ion-input [(ngModel)]="users.name" name="nama" type="text" placeholder="Name" #nama="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="users.username" placeholder="Username" name="username" type="text" #username="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="users.email" placeholder="Email" name="email" type="email" #email="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Tanggal Lahir</ion-label>
+          <ion-datetime [(ngModel)]="users.tanggallahir" displayFormat="MMM DD YYYY" name="tanggallahir" #tanggallahir="ngModel" required></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="users.password" placeholder="Password" name="password" type="password" #password="ngModel" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <button ion-button block outline color="light" ion-button (click)="onSignup(signupForm)">Sign Up</button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,69 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>E-Laundry</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding="true" class="has-header">
+  <ion-list id="profil-list3">
+   
+    <ion-item class="item-avatar" id="profil-list-item5" style="">
+      <img src="../assets/arga.png">
+      <h2>{{name}}</h2>
+    </ion-item>
+
+
+     <ion-list>
+    <ion-list-header>
+      PROFILE
+    </ion-list-header>
+
+    <ion-item (click)="launchEditprofilePage()">
+      <ion-icon name='color-wand' item-start></ion-icon>
+      Edit Profile
+    </ion-item>
+
+    <ion-item (click)="launchEditpasswordPage()">
+      <ion-icon name='key' item-start></ion-icon>
+      Change Password
+    </ion-item>
+
+  </ion-list>
+
+    <ion-list>
+    <ion-list-header>
+      FEEDBACK
+    </ion-list-header>
+
+    <ion-item (click)="launchReviewPage()">
+      <ion-icon name='create' item-start></ion-icon>
+      Write to Us
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name='star' item-start></ion-icon>
+      Rate Us
+    </ion-item>
+  </ion-list>
+
+<ion-list>
+    <ion-list-header>
+      ABOUT
+    </ion-list-header>
+
+    <ion-item (click)="openNavTentangPage(item)">
+      <ion-icon name='help' item-start></ion-icon>
+     About Us
+    </ion-item>
+
+  </ion-list>
+
+      <div text-center>
+ <button ion-button color="danger" outline ion-botton (click)="launchWelcomePage()"> Logout </button>
+
+</div>
+      
+  </ion-list>
+</ion-content>

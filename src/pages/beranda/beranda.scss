@@ -1,0 +1,11 @@
+page-beranda {
+    .background {
+        background-image: url('../assets/bg.jpg');
+    }
+    ion-slides.slides {
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;   
+        height: 150px;
+    }
+}
