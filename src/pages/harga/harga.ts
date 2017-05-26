@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { HargaPage } from '../harga/harga';
+import { HistoryPage } from '../history/history';
 
 /*
-  Generated class for the Laundrydetail page.
+  Generated class for the Harga page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-laundrydetail',
-  templateUrl: 'laundrydetail.html'
+  selector: 'page-harga',
+  templateUrl: 'harga.html'
 })
-export class LaundrydetailPage {
+export class HargaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  launchHargaPage(){
-    this.navCtrl.push(HargaPage);
+  launchHistoryPage(){
+    this.navCtrl.push(HistoryPage);
   }
-
+  
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LaundrydetailPage');
+    console.log('ionViewDidLoad HargaPage');
   }
 
 }

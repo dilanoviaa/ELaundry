@@ -10,7 +10,7 @@ import { UserDataProvider } from '../../provider/user-data';
   templateUrl: 'about.html'
 })
 export class DaftarPage {
-  users: {username?: string, name?: string, email?: string, password?: string, tanggallahir?:string} = {};
+  users: {username?: string, name?: string, email?: string, password?: string, tanggallahir?:string, address?: string, phone_number?:number} = {};
     submitted = false;
 
   public tanggallahir = {
@@ -40,13 +40,15 @@ export class DaftarPage {
                     email: this.users.email,
                     password: this.users.password,
                     tanggallahir: this.users.tanggallahir,
+                    address: this.users.address,
+                    phone_number: this.users.phone_number
                   });
                   this.http.post("http://127.0.0.1/cobaapp1/projeks/register.php",input).subscribe(data => {
                        loading.dismiss();
                        let response = data.json();
                        if(response.status == 200){
                           let user=response.data;
-                          this.userDataProvider.signup(user.username);
+                          this.userDataProvider.login(user.user_id,user.username,user.name,user.tanggallahir,user.email,user.password,user.address,user.phone_number);
                           this.navCtrl.push(TabsPage);
                        }
                        this.showAlert(response.message);

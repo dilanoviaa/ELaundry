@@ -30,6 +30,12 @@
         <ion-item>
           <ion-input [(ngModel)]="users.password" placeholder="Password" name="password" type="password" #password="ngModel" required></ion-input>
         </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="users.address" placeholder="Address" name="address" type="text" #address="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="users.phone_number" placeholder="Phone_number" name="phone_number" type="number" #phone_number="ngModel" required></ion-input>
+        </ion-item>
       </ion-list>
       <button ion-button block outline color="light" ion-button (click)="onSignup(signupForm)">Sign Up</button>
       </form>

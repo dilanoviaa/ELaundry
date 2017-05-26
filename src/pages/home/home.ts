@@ -40,7 +40,7 @@ export class MasukPage {
            loading.dismiss();
            if(response.status == 200) {
              let user=response.data;
-             this.userDataProvider.login(user.user_id,user.username,user.name,user.tanggallahir,user.email);
+             this.userDataProvider.login(user.user_id,user.username,user.name,user.tanggallahir,user.email,user.password,user.address,user.phone_number);
              console.log(user);
              this.navCtrl.push(TabsPage);
            } else {

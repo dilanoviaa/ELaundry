@@ -20,7 +20,7 @@ import { UserDataProvider } from '../../provider/user-data';
 export class AccountPage {
   name: string;
 
-  constructor(public alertCtrl: AlertController, public nav: NavController, public userData: UserDataProvider) {}
+  constructor(public userDataProvider:UserDataProvider,public alertCtrl: AlertController, public nav: NavController, public userData: UserDataProvider) {}
 
   
   ionViewDidLoad() {
@@ -36,6 +36,7 @@ ngAfterViewInit() {
   }
   launchWelcomePage(){
     this.nav.push(WelcomePage);
+    this.userDataProvider.logout();
     window.location.reload();
   }
 
@@ -54,4 +55,6 @@ launchEditprofilePage(){
 launchEditpasswordPage(){
     this.nav.push(EditpasswordPage);
   }
+
+  
 }

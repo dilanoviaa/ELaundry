@@ -36,17 +36,20 @@ export class UserDataProvider {
 
 
 
-  setId(id) {
-    this.storage.set('user_id', id);
+  setId(user_id) {
+    this.storage.set('user_id', user_id);
   }
 
-  login(user_id,username,name,email,tanggallahir) {
+  login(user_id,username,name,tanggallahir,email,password,address,phone_number) {
     this.storage.set(this.HAS_LOGGED_IN, true);
     this.storage.set('user_id', user_id);
     this.storage.set('username', username);
     this.storage.set('name',name);
     this.storage.set('tanggallahir',tanggallahir);
     this.storage.set('email',email);
+    this.storage.set('password',password);
+    this.storage.set('address',address);
+    this.storage.set('phone_number',phone_number);
     this.events.publish('user:login');
     this.loginState = true;
   }
@@ -61,9 +64,12 @@ export class UserDataProvider {
     this.storage.remove(this.HAS_LOGGED_IN);
     this.storage.remove('user_id');
     this.storage.remove('username');
-    this.storage.remove('user_status');
+    this.storage.remove('tanggallahir');
     this.storage.remove('phone_number');
     this.storage.remove('email');
+    this.storage.remove('name');
+    this.storage.remove('address');
+    this.storage.remove('password');
     this.storage.remove('token');
     this.events.publish('user:logout');
     this.loginState = false;
@@ -93,6 +99,18 @@ export class UserDataProvider {
   }
   getPhoneNumber() {
     return this.storage.get('phone_number').then((value) => {
+      return value;
+    });
+  }
+
+  getPassword() {
+    return this.storage.get('password').then((value) => {
+      return value;
+    });
+  }
+
+  getAddress() {
+    return this.storage.get('address').then((value) => {
       return value;
     });
   }

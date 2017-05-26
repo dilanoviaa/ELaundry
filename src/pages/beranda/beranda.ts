@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LaundrydetailPage } from '../laundrydetail/laundrydetail';
+import { SearchPage } from '../search/search';
 
 /*
   Generated class for the Beranda page.
@@ -19,6 +20,10 @@ export class BerandaPage {
 launchLaundrydetailPage(){
     this.navCtrl.push(LaundrydetailPage);
   }
+
+ launchSearchPage(){
+    this.navCtrl.push(SearchPage);
+  } 
 
   ionViewDidLoad() {
 

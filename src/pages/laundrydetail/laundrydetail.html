@@ -9,7 +9,6 @@
   <ion-navbar>
     <ion-title>E-Laundry</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content class="background">
@@ -20,29 +19,16 @@
     <div class="card-title">Toko ABC</div>
     <div class="card-subtitle"><ion-icon name="star"></ion-icon></div>
   </ion-card>
-  <p>Alamat</p>
-  <p>Layanan:</p>
-  <ion-item>
-    <ion-label>5 jam</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>1 hari</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>2 hari</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>3 hari</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>4 hari</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
-  </ion-item>
-  <p>Jenis:</p>
+
+    <ion-list>
+     <ion-list-header>
+      ALAMAT
+    </ion-list-header>
+    </ion-list> 
+ <ion-list>
+     <ion-list-header>
+      JENIS
+    </ion-list-header>
   <ion-item>
     <ion-label>Pakaian Biasa</ion-label>
     <ion-checkbox color="dark" checked="false"></ion-checkbox>
@@ -55,6 +41,52 @@
     <ion-label>Pakaian Dalam</ion-label>
     <ion-checkbox color="dark" checked="false"></ion-checkbox>
   </ion-item>
-  <button ion-button full color="danger" ion-botton (click)="launchHistoryPage()">ORDER</button>
+   </ion-list>
+
+   <ion-list>
+     <ion-list-header>
+      KOMENTAR
+    </ion-list-header>
+    <div class="container">
+  <div class="dialogbox">
+    <div class="body">
+      <span class="tip tip-left"></span>
+      <div class="message">
+        <span>I just made a comment about this comment box which is purely made from CSS.</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="dialogbox">
+    <div class="body">
+      <span class="tip tip-left"></span>
+      <div class="message">
+        <span>I just made a comment about this comment box which is purely made from CSS.</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="dialogbox">
+    <div class="body">
+      <span class="tip tip-left"></span>
+      <div class="message">
+        <span>I just made a comment about this comment box which is purely made from CSS.</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="dialogbox">
+    <div class="body">
+      <span class="tip tip-left"></span>
+      <div class="message">
+        <span>I just made a comment about this comment box which is purely made from CSS.</span>
+      </div>
+    </div>
+  </div>
+</div>
+    </ion-list> 
+
+  <button ion-button full color="secondary" ion-botton (click)="launchHargaPage()">Next</button>
+
   </ion-content>
 </ion-content>

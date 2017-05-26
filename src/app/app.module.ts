@@ -21,6 +21,8 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { EditpasswordPage } from '../pages/editpassword/editpassword';
 import { ReviewPage } from '../pages/review/review';
 import { TentangPage } from '../pages/tentang/tentang';
+import { SearchPage } from '../pages/search/search';
+import { HargaPage } from '../pages/harga/harga';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { TentangPage } from '../pages/tentang/tentang';
     EditprofilePage,
     EditpasswordPage,
     ReviewPage,
-    TentangPage
+    TentangPage,
+    SearchPage,
+    HargaPage,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,9 @@ import { TentangPage } from '../pages/tentang/tentang';
     EditprofilePage,
     EditpasswordPage,
     ReviewPage,
-    TentangPage
+    TentangPage,
+    SearchPage,
+    HargaPage,
   ],
   providers: [
     StatusBar,

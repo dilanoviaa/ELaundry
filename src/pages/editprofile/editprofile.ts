@@ -3,7 +3,7 @@ import { NavController, NavParams,ToastController,LoadingController } from 'ioni
 import { AccountPage } from '../account/account';
 import { UserDataProvider } from '../../provider/user-data';
 import { NgForm } from '@angular/forms';
-import { Http } from '@angular/http';
+import { Http } from '@angular/http'; 
 /*
   Generated class for the Editprofile page.
 
@@ -18,7 +18,11 @@ export class EditprofilePage {
   name: string;
   username: string;
   email: string;
-  user: {username?: string, name?: string, email?: string, address?:string,phone_number?:number,user_id?:string} = {};
+  password: string;
+  user_id: number;
+  address: string;
+  phone_number: number;
+  users: {password?: string, username?: string, name?: string, email?: string, address?:string,phone_number?:number,user_id?:number} = {};
     submitted = false;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -32,6 +36,9 @@ export class EditprofilePage {
                 this.getName();
                 this.getEmail();
                 this.getID();
+                this.getPassword();
+                this.getAddress();
+                this.getPhoneNumber();
   }
 
   ionViewDidLoad() {
@@ -40,25 +47,43 @@ export class EditprofilePage {
 
 getUsername() {
     this.userDataProvider.getUsername().then((username) => {
-      this.user.username = username;
+      this.users.username = username;
     });
   }
 
   getName() {
     this.userDataProvider.getName().then((username) => {
-      this.user.name = username;
+      this.users.name = username;
     });
   }
 
   getEmail() {
     this.userDataProvider.getEmail().then((username) => {
-      this.user.email = username;
+      this.users.email = username;
     });
   }
 
   getID() {
       this.userDataProvider.getID().then((username) => {
-        this.user.user_id = username;
+        this.users.user_id = username;
+      });
+    } 
+
+  getPassword() {
+      this.userDataProvider.getPassword().then((username) => {
+        this.users.password = username;
+      });
+    }
+
+    getAddress() {
+      this.userDataProvider.getAddress().then((username) => {
+        this.users.address = username;
+      });
+    }
+
+     getPhoneNumber() {
+      this.userDataProvider.getPhoneNumber().then((username) => {
+        this.users.phone_number = username;
       });
     }  
 
@@ -71,39 +96,38 @@ getUsername() {
     if (form.valid) {
       loading.present();
       let input = JSON.stringify({
-        username: this.user.username,
-        name: this.user.name,
-        email: this.user.email,
-        address: this.user.address,
-        phone_number: this.user.phone_number,
-        user_id:this.user.user_id
+        username: this.users.username,
+        name: this.users.name,
+        email: this.users.email,
+        address: this.users.address,
+        phone_number: this.users.phone_number,
       });
-      this.http.post("localhost/cobaapp1/projeks/edit_profil.php",input).subscribe(data => {
+      this.http.post("http://localhost/cobaapp1/projeks/edit_profil.php?user_id="+this.users.user_id,input).subscribe(data => {
            loading.dismiss();
            console.log(input);
            let response = data.json();
            if(response.status == 200){
-             let user=response.data;
-             this.userDataProvider.signup(user.username);
               this.navCtrl.push(AccountPage);
            }
            this.showAlert(response.message);
-}, err => {
-loading.dismiss();
-this.showError(err);
-});
+           
+        }, err => {
+           loading.dismiss();
+           this.showError(err);
+        });
+    }
+  }
+  showError(err: any){
+    err.status==0?
+    this.showAlert("Tidak ada koneksi. Cek kembali sambungan Internet perangkat Anda"):
+    this.showAlert("Tidak dapat menyambungkan ke server. Mohon muat kembali halaman ini");
+  }
+  showAlert(message){
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000
+    });
+    toast.present();
+  }
 }
-}
-showError(err: any){
-err.status==0?
-this.showAlert("Tidak ada koneksi. Cek kembali sambungan Internet perangkat Anda"):
-this.showAlert("Tidak dapat menyambungkan ke server. Mohon muat kembali halaman ini");
-}
-showAlert(message){
-let toast = this.toastCtrl.create({
-message: message,
-duration: 3000
-});
-toast.present();
-}
-}
+
