@@ -23,6 +23,7 @@ import { ReviewPage } from '../pages/review/review';
 import { TentangPage } from '../pages/tentang/tentang';
 import { SearchPage } from '../pages/search/search';
 import { HargaPage } from '../pages/harga/harga';
+import { KomentarPage } from '../pages/komentar/komentar';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { HargaPage } from '../pages/harga/harga';
     TentangPage,
     SearchPage,
     HargaPage,
+    KomentarPage
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { HargaPage } from '../pages/harga/harga';
     TentangPage,
     SearchPage,
     HargaPage,
+    KomentarPage
   ],
   providers: [
     StatusBar,

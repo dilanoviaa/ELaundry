@@ -35,7 +35,6 @@ export class EditprofilePage {
                 this.getUsername();
                 this.getName();
                 this.getEmail();
-                this.getID();
                 this.getPassword();
                 this.getAddress();
                 this.getPhoneNumber();
@@ -62,12 +61,6 @@ getUsername() {
       this.users.email = username;
     });
   }
-
-  getID() {
-      this.userDataProvider.getID().then((username) => {
-        this.users.user_id = username;
-      });
-    } 
 
   getPassword() {
       this.userDataProvider.getPassword().then((username) => {

@@ -19,106 +19,46 @@
 
 
 <ion-content class="background">
-<ion-slides pager >
+  <ion-grid>
+    <ion-row>
+      <ion-slides pager >
+        <ion-slide>
+          <div class="overlay">
+            <img src='../assets/pakaian.png' class="slider-img">
+          </div>
+          <div class="card-title">Promo</div>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
 
-  <ion-slide>
-    <img src="../assets/pakaian.png"/>
-  </ion-slide>
-
-   <ion-slide>
-    <img src="../assets/pakaian.png"/>
-  </ion-slide>
-
-   <ion-slide>
-    <img src="../assets/pakaian.png"/>
-  </ion-slide>
-
-</ion-slides>
-
-<ion-card ion-card (click)="launchLaundrydetailPage()">
-  <img style='height: 100%; width: 100%; object-fit: contain' src="../assets/pakaian.png"/> 
-  <ion-card-content>
-    <p>Laundry Michael</p>
-    <p>Jalan Meranti 9 No 4</p>
-  </ion-card-content>
-
-  <ion-row>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>12 Likes</div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
-      </button>
-    </ion-col>
-    <ion-col center text-center>
-      <ion-note>
-        2.6 km
-      </ion-note>
-    </ion-col>
-  </ion-row>
-
-</ion-card>
-
-<ion-card>
-<img style='height: 100%; width: 100%; object-fit: contain' src="../assets/pakaian.png"/> 
-  <ion-card-content>
-    <p>Laundry Jono</p>
-    <p>Jalan Merdeka 1 No 3</p>
-  </ion-card-content>
-
-  <ion-row>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>12 Likes</div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
-      </button>
-    </ion-col>
-    <ion-col center text-center>
-      <ion-note>
-        2.6 km
-      </ion-note>
-    </ion-col>
-  </ion-row>
-</ion-card>
-
-<ion-card>
-<img style='height: 100%; width: 100%; object-fit: contain' src="../assets/pakaian.png"/> 
-
-  <ion-card-content>
-    <p>Laundry Joni</p>
-    <p>Jalan Merdeka 2 No 4</p>
-  </ion-card-content>
-
-  <ion-row>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>12 Likes</div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
-      </button>
-    </ion-col>
-    <ion-col center text-center>
-      <ion-note>
-        2.6 km
-      </ion-note>
-    </ion-col>
-  </ion-row>
-</ion-card>
-
+    <ion-row class="categories">
+      <ion-card width-50 *ngFor="let item of data" ion-card>
+        <img (click)="launchLaundrydetailPage()" src="{{Foto}}" > 
+          <ion-card-content>
+            <p>{{data.NamaToko}}</p>
+            <p>{{data.Alamat}}</p>
+            <p>{{data.Deskripsi}}</p>
+          </ion-card-content>
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="thumbs-up"></ion-icon>
+                <div>{{data.Likes}}</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small (click)="launchKomentarPage()">
+                <ion-icon name="text"></ion-icon>
+                <div>4 Comments</div>
+              </button>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-note>
+              2.6 km
+              </ion-note>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+    </ion-row>
+  </ion-grid>
 </ion-content>

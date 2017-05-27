@@ -11,6 +11,7 @@ import { UserDataProvider } from '../../provider/user-data';
   templateUrl: 'home.html'
 })
 export class MasukPage {
+  data: any;
   users: {username?: string, password?: string} = {};
   submitted = false;
   constructor(public navCtrl: NavController,
@@ -69,4 +70,14 @@ export class MasukPage {
   launchDaftarPage(){
     this.navCtrl.push(DaftarPage);
   }
+
+  getPelaundry(){
+ this.http.get("http://localhost/cobaapp1/projeks/show_data.php").subscribe(data => {
+      let response = data.json();
+      console.log(response);
+      if(response.status== "200"){
+        this.data= response.data; 
+      }
+    });
+}
 }

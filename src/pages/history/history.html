@@ -29,26 +29,41 @@
 <ion-content>
   <div [ngSwitch]="order">
     <ion-list *ngSwitchCase="'In Progress'">
+      <ion-item-sliding>
       <ion-item>
-        <ion-thumbnail item-start>
-          <img src="../assets/pakaian.png">
+        <ion-thumbnail item-left>
+          <img src="../assets/arga.png">
         </ion-thumbnail>
-        <h2>Toko ABC</h2>
+        <h2><b>Toko ABC</b></h2>
+        <h5>Jenis: Pakaian Biasa</h5>
+        <h5>Layanan: 5 jam</h5>
+        <h5>Harga: Rp 5000</h5>
       </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger">
+        <ion-icon name="sad"></ion-icon>
+        COMPLAINT
+      </button>
+      <button ion-button color="secondary">
+        <ion-icon name="happy"></ion-icon>
+        COMPLETED
+      </button>
+    </ion-item-options>
+    </ion-item-sliding>
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-left>
           <img src="assets/img/thumbnail-puppy-2.jpg">
         </ion-thumbnail>
         <h2>Oscar</h2>
       </ion-item>
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-left>
           <img src="assets/img/thumbnail-puppy-4.jpg">
         </ion-thumbnail>
         <h2>Zoey</h2>
       </ion-item>
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-left>
           <img src="assets/img/thumbnail-puppy-3.jpg">
         </ion-thumbnail>
         <h2>Otto</h2>
@@ -57,25 +72,25 @@
 
     <ion-list *ngSwitchCase="'Completed'">
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-left>
           <img src="assets/img/thumbnail-kitten-1.jpg">
         </ion-thumbnail>
         <h2>Luna</h2>
       </ion-item>
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-left>
           <img src="assets/img/thumbnail-kitten-3.jpg">
         </ion-thumbnail>
         <h2>Milo</h2>
       </ion-item>
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-left>
           <img src="assets/img/thumbnail-kitten-4.jpg">
         </ion-thumbnail>
         <h2>Bandit</h2>
       </ion-item>
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-left>
           <img src="assets/img/thumbnail-kitten-2.jpg">
         </ion-thumbnail>
         <h2>Nala</h2>
@@ -83,26 +98,37 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'Complaint'">
+          <ion-item-sliding>
       <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-duckling-1.jpg">
+        <ion-thumbnail item-left>
+          <img src="../assets/arga.png">
         </ion-thumbnail>
-        <h2>Daffy</h2>
+        <h2><b>Toko ABC</b></h2>
+        <h5>Jenis: Pakaian Biasa</h5>
+        <h5>Layanan: 5 jam</h5>
+        <h5>Harga: Rp 5000</h5>
       </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="secondary">
+        <ion-icon name="happy"></ion-icon>
+        COMPLETED
+      </button>
+    </ion-item-options>
+    </ion-item-sliding>
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-left>
           <img src="assets/img/thumbnail-duckling-2.jpg">
         </ion-thumbnail>
         <h2>Huey</h2>
       </ion-item>
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-left>
           <img src="assets/img/thumbnail-duckling-3.jpg">
         </ion-thumbnail>
         <h2>Dewey</h2>
       </ion-item>
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-thumbnail item-left>
           <img src="assets/img/thumbnail-duckling-4.jpg">
         </ion-thumbnail>
         <h2>Louie</h2>
