@@ -19,6 +19,14 @@
 
 
 <ion-content class="background">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Tarik untuk memperbaharui"
+      refreshingSpinner="circles"
+      refreshingText="Memperbaharui...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-grid>
     <ion-row>
       <ion-slides pager >
@@ -33,29 +41,26 @@
 
     <ion-row class="categories">
       <ion-card width-50 *ngFor="let item of data" ion-card>
-        <img (click)="launchLaundrydetailPage()" src="{{Foto}}" > 
-          <ion-card-content>
-            <p>{{data.NamaToko}}</p>
-            <p>{{data.Alamat}}</p>
-            <p>{{data.Deskripsi}}</p>
+        <img (click)="launchLaundrydetailPage(item)" src='{{item.Foto}}'/> 
+          <ion-card-content >
+            <p>Nama Toko: {{item.NamaToko}}</p>
+            <p>Alamat: {{item.Alamat}}</p>
+            <ion-note>
+              2.6 km
+            </ion-note>
           </ion-card-content>
           <ion-row>
             <ion-col>
               <button ion-button icon-left clear small>
                 <ion-icon name="thumbs-up"></ion-icon>
-                <div>{{data.Likes}}</div>
+                <div>{{item.Likes}}</div>
               </button>
             </ion-col>
             <ion-col>
               <button ion-button icon-left clear small (click)="launchKomentarPage()">
                 <ion-icon name="text"></ion-icon>
-                <div>4 Comments</div>
+                <div>4</div>
               </button>
-            </ion-col>
-            <ion-col center text-center>
-              <ion-note>
-              2.6 km
-              </ion-note>
             </ion-col>
           </ion-row>
         </ion-card>

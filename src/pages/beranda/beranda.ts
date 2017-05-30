@@ -4,6 +4,7 @@ import { LaundrydetailPage } from '../laundrydetail/laundrydetail';
 import { SearchPage } from '../search/search';
 import { Http } from '@angular/http'; 
 import { KomentarPage } from '../komentar/komentar';
+import { UserDataProvider } from '../../provider/user-data';
 
 /*
   Generated class for the Beranda page.
@@ -16,20 +17,35 @@ import { KomentarPage } from '../komentar/komentar';
   templateUrl: 'beranda.html'
 })
 export class BerandaPage {
-
-  data: any;
+  data: any=[];
   NamaToko:string;
   Alamat:string;
   Deskripsi:string;
   Likes:number;
   Foto: string;
-
+  id_pelaundry:number;
+  harga_limajam: number;
+  harga_satuhari: number;
+  harga_duahari: number;
+  harga_tigahari: number;
+  harga_empathari: number;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public toastCtrl: ToastController,
               public http: Http,
-              public loadCtrl: LoadingController) {}
+              public loadCtrl: LoadingController,
+              public userDataProvider:UserDataProvider) {}
+
+doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.ionViewWillEnter();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
 
 getPelaundry(){
  this.http.get("http://localhost/cobaapp1/projeks/show_data.php").subscribe(data => {
@@ -41,8 +57,9 @@ getPelaundry(){
     });
 }
 
-launchLaundrydetailPage(){
-    this.navCtrl.push(LaundrydetailPage);
+launchLaundrydetailPage(item){
+    this.navCtrl.push(LaundrydetailPage, item);
+    this.userDataProvider.pelaundry(item.id_pelaundry,item.NamaToko,item.Alamat,item.Deskripsi,item.Foto,item.harga_limajam,item.harga_satuhari,item.harga_duahari,item.harga_tigahari,item.harga_empathari);
   }
 
  launchSearchPage(){

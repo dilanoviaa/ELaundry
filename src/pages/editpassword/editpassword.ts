@@ -16,7 +16,7 @@ import { Http } from '@angular/http';
   templateUrl: 'editpassword.html'
 })
 export class EditpasswordPage {
-  users: {password?: string, old_password?:string, user_id?:number, password_confirm?: string} = {};
+  users: {password?: string, old_password?:string, user_id?:number, password_confirm?: string,username?: string, name?: string, email?: string, address?:string,phone_number?:number} = {};
     submitted = false;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -27,6 +27,16 @@ export class EditpasswordPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditpasswordPage');
+  }
+
+  ngAfterViewInit() {
+                this.getUserID();
+  }
+
+  getUserID() {
+    this.userDataProvider.getID().then((username) => {
+      this.users.user_id = username;
+    });
   }
 
   forgetPassword(form: NgForm) {

@@ -11,41 +11,51 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="background">
 <ion-content class="card-background-page">
 
   <ion-card>
-    <img src="../assets/pakaian.png"/>
-    <div class="card-title">Toko ABC</div>
-    <div class="card-subtitle"><ion-icon name="star"></ion-icon></div>
+    <img src='{{Foto}}'/>
+    <div class="card-title">{{NamaToko}}</div>
   </ion-card>
 
-    <ion-list>
+  <ion-list>
      <ion-list-header>
       ALAMAT
+      <p>{{Alamat}}</p>
     </ion-list-header>
-    </ion-list> 
+  </ion-list> 
+  <ion-list>
+     <ion-list-header>
+      DESKRIPSI
+      <p>{{Deskripsi}}</p>
+    </ion-list-header>
+  </ion-list> 
  <ion-list>
      <ion-list-header>
-      JENIS
+      LAYANAN
     </ion-list-header>
   <ion-item>
-    <ion-label>Pakaian Biasa</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
+    <p>1. 5 jam     {{harga_limajam}}</p>
   </ion-item>
   <ion-item>
-    <ion-label>Kain Berat (Selimut, Sprei, Karpet, dll)</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
+    <p>2. 1 hari    {{harga_satuhari}}</p>
   </ion-item>
   <ion-item>
-    <ion-label>Pakaian Dalam</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
+    <p>3. 2 hari    {{harga_duahari}}</p>
   </ion-item>
-   </ion-list>
-
-
-
-  <button ion-button full color="secondary" ion-botton (click)="launchHargaPage()">Next</button>
-
-  </ion-content>
+  <ion-item>
+    <p>4. 3 hari    {{harga_tigahari}}</p>
+  </ion-item>
+  <ion-item>
+    <p>5. 4 hari    {{harga_empathari}}</p>
+  </ion-item>
+  </ion-list>
+  <form #transaksiForm="ngForm" novalidate>
+      <ion-list no-line>
+        <ion-item>
+          <ion-input [(ngModel)]="data.opsi" name="opsi" type="number" placeholder="Pilih Jenis Layanan" #opsi="ngModel" required></ion-input>
+        </ion-item>
+      </ion-list>
+  </form>
+  <button ion-button (click)="transaksi(transaksiForm)"> NEXT </button>
 </ion-content>

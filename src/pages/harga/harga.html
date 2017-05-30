@@ -5,47 +5,42 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="background">
 <ion-content class="card-background-page">
-
   <ion-card>
-    <img src="../assets/pakaian.png"/>
-    <div class="card-title">Toko ABC</div>
-    <div class="card-subtitle"><ion-icon name="star"></ion-icon></div>
+    <img src='{{Foto}}'/>
+    <div class="card-title">{{NamaToko}}</div>
   </ion-card>
-
-    <ion-list>
-     <ion-list-header>
-      ALAMAT
-    </ion-list-header>
-    </ion-list> 
-
   <ion-list>
      <ion-list-header>
-      LAYANAN
+      ALAMAT
+      <p>{{Alamat}}</p>
+    </ion-list-header>
+  </ion-list> 
+  <ion-list>
+     <ion-list-header>
+      DESKRIPSI
+      <p>{{Deskripsi}}</p>
+    </ion-list-header>
+  </ion-list> 
+  <ion-list>
+     <ion-list-header>
+      Konfirmasi Order
     </ion-list-header>
   <ion-item>
-    <ion-label>5 jam</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
+    <button ion-button clear (click)="launchHistoryPage()">5 jam {{limajam}}</button>
   </ion-item>
   <ion-item>
-    <ion-label>1 hari</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
+    <button ion-button clear (click)="launchHistoryPage()">1 hari {{satuhari}}</button>
   </ion-item>
   <ion-item>
-    <ion-label>2 hari</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
+    <button ion-button clear (click)="launchHistoryPage()">2 hari {{duahari}}</button>
   </ion-item>
   <ion-item>
-    <ion-label>3 hari</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
+    <button ion-button clear (click)="launchHistoryPage()">3 hari {{tigahari}}</button>
   </ion-item>
   <ion-item>
-    <ion-label>4 hari</ion-label>
-    <ion-checkbox color="dark" checked="false"></ion-checkbox>
+    <button ion-button clear (click)="launchHistoryPage()">4 hari {{empathari}}</button>
   </ion-item>
   </ion-list>
-  <button ion-button full color="secondary" ion-botton (click)="launchHistoryPage()">ORDER</button>
 
-  </ion-content>
 </ion-content>

@@ -43,7 +43,7 @@ page-beranda {
 
     .categories {
       flex-wrap: wrap;
-      h2 {
+      p {
         margin-top: -12px;
         font-size: 2.7rem;
         color: rgba(66, 66, 66, 0.87);
@@ -51,7 +51,7 @@ page-beranda {
       }
       img {
         height: 110px;
-        width: 100%;
+        width: 50%;
         position: relative;
         z-index: -111;
       }

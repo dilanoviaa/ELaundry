@@ -54,6 +54,19 @@ export class UserDataProvider {
     this.loginState = true;
   }
 
+  pelaundry(id_pelaundry,NamaToko,Alamat,Deskripsi,Foto,harga_limajam,harga_satuhari,harga_duahari,harga_tigahari,harga_empathari) {
+    this.storage.set('id_pelaundry', id_pelaundry);
+    this.storage.set('NamaToko', NamaToko);
+    this.storage.set('Alamat', Alamat);
+    this.storage.set('Deskripsi', Deskripsi);
+    this.storage.set('Foto', Foto);
+    this.storage.set('harga_limajam', harga_limajam);
+    this.storage.set('harga_satuhari', harga_satuhari);
+    this.storage.set('harga_duahari', harga_duahari);
+    this.storage.set('harga_tigahari', harga_tigahari);
+    this.storage.set('harga_empathari', harga_empathari)
+  }
+
   signup(username) {
     this.storage.set(this.HAS_LOGGED_IN, true);
     this.storage.set('username',username);
@@ -114,6 +127,67 @@ export class UserDataProvider {
       return value;
     });
   }
+
+  getidpelaundry() {
+    return this.storage.get('id_pelaundry').then((value) => {
+      return value;
+    });
+  }
+
+  getnamatoko() {
+    return this.storage.get('NamaToko').then((value) => {
+      return value;
+    });
+  }
+
+  getalamat() {
+    return this.storage.get('Alamat').then((value) => {
+      return value;
+    });
+  }
+
+  getdeskripsi() {
+    return this.storage.get('Deskripsi').then((value) => {
+      return value;
+    });
+  }
+
+  getfoto() {
+    return this.storage.get('Foto').then((value) => {
+      return value;
+    });
+  }
+
+  gethargalimajam() {
+    return this.storage.get('harga_limajam').then((value) => {
+      return value;
+    });
+  }
+
+  gethargasatuhari() {
+    return this.storage.get('harga_satuhari').then((value) => {
+      return value;
+    });
+  }
+
+  gethargaduahari() {
+    return this.storage.get('harga_duahari').then((value) => {
+      return value;
+    });
+  }
+
+  gethargatigahari() {
+    return this.storage.get('harga_tigahari').then((value) => {
+      return value;
+    });
+  }
+
+  gethargaempathari() {
+    return this.storage.get('harga_empathari').then((value) => {
+      return value;
+    });
+  }
+  
 
   // return a promise
   // hasLoggedIn(val = this.getToken()) {
