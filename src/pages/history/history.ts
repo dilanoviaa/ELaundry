@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,ToastController,LoadingController } from 'ionic-angular';
+import { NavController, NavParams,ToastController,LoadingController, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http'; 
 import { UserDataProvider } from '../../provider/user-data';
 
@@ -26,7 +26,8 @@ export class HistoryPage {
               public toastCtrl: ToastController,
               public http: Http,
               public loadCtrl: LoadingController,
-              public userDataProvider:UserDataProvider) {}
+              public userDataProvider:UserDataProvider,
+              public alertCtrl: AlertController) {}
   
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
@@ -66,6 +67,34 @@ export class HistoryPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoryPage');
+  }
+
+doPrompt() {
+    let prompt = this.alertCtrl.create({
+      title: 'Komplain',
+      message: "Silakan masukkan komplain Anda terhadap laundry ini",
+      inputs: [
+        {
+          name: 'complaint',
+          placeholder: 'Komplain Anda...'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log('Saved clicked');
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
 }
