@@ -53,8 +53,11 @@
   <form #transaksiForm="ngForm" novalidate>
       <ion-list no-line>
         <ion-item>
-          <ion-input [(ngModel)]="data.opsi" name="opsi" type="number" placeholder="Pilih Jenis Layanan" #opsi="ngModel" required></ion-input>
+          <ion-input [(ngModel)]="data.opsi" name="opsi" type="number" 
+          placeholder="Pilih Jenis Layanan" #opsi="ngModel" required></ion-input>
         </ion-item>
+
+        
       </ion-list>
   </form>
   <button ion-button (click)="transaksi(transaksiForm)"> NEXT </button>

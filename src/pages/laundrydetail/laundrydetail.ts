@@ -28,7 +28,8 @@ export class LaundrydetailPage {
   harga_tigahari: number;
   harga_empathari: number;
   users:{user_id?:number} ={}
-  data: {opsi?:number, id_pelaundry?:number} = {};
+  data: {opsi?:number} = {};
+  item: {id_pelaundry?:number} = {};
     submitted = false;
   constructor(public navCtrl: NavController,
               public navParams: NavParams, 
@@ -59,12 +60,11 @@ export class LaundrydetailPage {
                 //this.gethargasatuhari();
                 //this.gethargaduahari();
                 //this.gethargatigahari();
-                //this.gethargaempathari();
   }
 
   getidpelaundry() {
     this.userDataProvider.getidpelaundry().then((id_pelaundry) => {
-      this.id_pelaundry;
+      this.item.id_pelaundry = id_pelaundry;
     });
   }
 
@@ -77,7 +77,6 @@ export class LaundrydetailPage {
   launchHargaPage(){
     this.navCtrl.push(HargaPage);
   }
-
 
   launchHistoryPage(){
     this.navCtrl.push(HistoryPage);
@@ -102,7 +101,7 @@ export class LaundrydetailPage {
                   let input = JSON.stringify({
                     opsi: this.data.opsi
                   });
-                  this.http.post("http://localhost/cobaapp1/projeks/add_item.php?user_id="+this.users.user_id+"&id_pelaundry="+this.data.id_pelaundry,input).subscribe(data => {
+                  this.http.post("http://localhost/cobaapp1/projeks/add_item.php?user_id="+this.users.user_id+"&id_pelaundry="+this.item.id_pelaundry,input).subscribe(data => {
            loading.dismiss();
            console.log(input);
            let response = data.json();

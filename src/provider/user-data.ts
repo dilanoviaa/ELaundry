@@ -67,6 +67,19 @@ export class UserDataProvider {
     this.storage.set('harga_empathari', harga_empathari)
   }
 
+  hapuspelaundry() {
+    this.storage.remove('id_pelaundry');
+    this.storage.remove('NamaToko');
+    this.storage.remove('Alamat');
+    this.storage.remove('Deskripsi');
+    this.storage.remove('Foto');
+    this.storage.remove('harga_limajam');
+    this.storage.remove('harga_satuhari');
+    this.storage.remove('harga_duahari');
+    this.storage.remove('harga_tigahari');
+    this.storage.remove('harga_empathari')
+  }
+
   signup(username) {
     this.storage.set(this.HAS_LOGGED_IN, true);
     this.storage.set('username',username);

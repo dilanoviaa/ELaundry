@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { DaftarPage } from '../about/about';
 import { MasukPage } from '../home/home';
+import { UserDataProvider } from '../../provider/user-data';
 
 /*
   Generated class for the Welcome page.
@@ -15,8 +16,11 @@ import { MasukPage } from '../home/home';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
+  constructor(public userDataProvider:UserDataProvider, public navCtrl: NavController, public navParams: NavParams) {}
+  ionViewWillEnter(){
+    this.userDataProvider.logout();
+    //this.userDataProvider.hapuspelaundry();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
   }

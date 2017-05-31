@@ -73,8 +73,9 @@ launchLaundrydetailPage(item){
     console.log('ionViewDidLoad BerandaPage');
   }
   ionViewWillEnter() {
-
+   //this.userDataProvider.hapuspelaundry();
    this.getPelaundry();
+   //this.userDataProvider.hapuspelaundry();
   }
 
 }
