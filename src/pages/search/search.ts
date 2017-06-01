@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,ToastController,LoadingController } from 'ionic-angular';
+import { Http } from '@angular/http'; 
 
 /*
   Generated class for the Search page.
@@ -12,68 +13,41 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'search.html'
 })
 export class SearchPage {
-    items;
+    data: any=[];
+    NamaToko: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-     this.initializeItems();
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public toastCtrl: ToastController,
+              public http: Http,
+              public loadCtrl: LoadingController) {
+                this.getPelaundry();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
   }
 
-  initializeItems() {
-    this.items = [
-      'Amsterdam',
-      'Bogota',
-      'Buenos Aires',
-      'Cairo',
-      'Dhaka',
-      'Edinburgh',
-      'Geneva',
-      'Genoa',
-      'Glasglow',
-      'Hanoi',
-      'Hong Kong',
-      'Islamabad',
-      'Istanbul',
-      'Jakarta',
-      'Kiel',
-      'Kyoto',
-      'Le Havre',
-      'Lebanon',
-      'Lhasa',
-      'Lima',
-      'London',
-      'Los Angeles',
-      'Madrid',
-      'Manila',
-      'New York',
-      'Olympia',
-      'Oslo',
-      'Panama City',
-      'Peking',
-      'Philadelphia',
-      'San Francisco',
-      'Seoul',
-      'Taipeh',
-      'Tel Aviv',
-      'Tokio',
-      'Uelzen',
-      'Washington'
-    ];
-  }
+  getPelaundry(){
+ this.http.get("http://localhost/cobaapp1/projeks/show_data.php").subscribe(data => {
+      let response = data.json();
+      console.log(response);
+      if(response.status== "200"){
+        this.data= response.data; 
+      }
+    });
+}
 
   getItems(ev) {
     // Reset items back to all of the items
-    this.initializeItems();
+    this.getPelaundry();
 
     // set val to the value of the ev target
     var val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
+      this.data = this.data.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }

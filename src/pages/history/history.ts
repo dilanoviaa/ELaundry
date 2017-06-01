@@ -14,13 +14,17 @@ import { UserDataProvider } from '../../provider/user-data';
   templateUrl: 'history.html'
 })
 export class HistoryPage {
-  data: any=[];
+  data:any=[];
   NamaToko: string;
   jenis_layanan: string;
   berat: number;
   harga_total: number;
   created_at: string;
-  users:{user_id?:number} ={}  
+  komplain: string;
+  users:{user_id?:number} ={}
+  item:{id_pelaundry?:number}={}
+  
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public toastCtrl: ToastController,
@@ -29,9 +33,9 @@ export class HistoryPage {
               public userDataProvider:UserDataProvider,
               public alertCtrl: AlertController) {}
   
-  doRefresh(refresher) {
+  doRefreshinProgress(refresher) {
     console.log('Begin async operation', refresher);
-    this.ionViewWillEnter();
+    this.getInProgress();
 
     setTimeout(() => {
       console.log('Async operation has ended');
@@ -39,19 +43,30 @@ export class HistoryPage {
     }, 2000);
   }
 
-  ionViewWillEnter() {
-   //this.userDataProvider.hapuspelaundry();
-   this.getInProgress();
-   //this.userDataProvider.hapuspelaundry();
+  doRefreshComplain(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getComplain();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
 
   ngAfterViewInit() {
                 this.getUserID();
+                this.getidpelaundry();
   }
 
   getUserID() {
     this.userDataProvider.getID().then((username) => {
       this.users.user_id = username;
+    });
+  }
+
+  getidpelaundry() {
+    this.userDataProvider.getidpelaundry().then((id_pelaundry) => {
+      this.item.id_pelaundry = id_pelaundry;
     });
   }
 
@@ -65,9 +80,33 @@ export class HistoryPage {
     });
   }
 
+  getComplain(){
+  this.http.get("http://localhost/cobaapp1/projeks/show_data4.php?user_id="+this.users.user_id).subscribe(data => {
+      let response = data.json();
+      console.log(response);
+      if(response.status== "200"){
+        this.data= response.data; 
+      }
+    });
+  }
+
+  postComplain(){
+    let input = JSON.stringify({
+          complaint: this.data.komplain,
+      });
+  this.http.post("http://localhost/cobaapp1/projeks/complain.php?id_pelaundry="+this.item.id_pelaundry, input).subscribe(data => {
+      let response = data.json();
+      console.log(response);
+      if(response.status== "200"){
+        this.data= response.data; 
+      }
+    });
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoryPage');
   }
+  
 
 doPrompt() {
     let prompt = this.alertCtrl.create({
@@ -89,6 +128,7 @@ doPrompt() {
         {
           text: 'Save',
           handler: data => {
+            this.postComplain();
             console.log('Saved clicked');
           }
         }

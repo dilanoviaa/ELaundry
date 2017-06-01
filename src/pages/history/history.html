@@ -27,16 +27,16 @@
 </ion-header>
 
 <ion-content>
-<ion-refresher (ionRefresh)="doRefresh($event)">
+  <div [ngSwitch]="order">
+    <ion-list *ngSwitchCase="'In Progress'">
+    <ion-refresher (ionRefresh)="doRefreshinProgress($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
       pullingText="Tarik untuk memperbaharui"
       refreshingSpinner="circles"
       refreshingText="Memperbaharui...">
     </ion-refresher-content>
-  </ion-refresher>
-  <div [ngSwitch]="order">
-    <ion-list *ngSwitchCase="'In Progress'">
+    </ion-refresher>
       <ion-item-sliding *ngFor="let item of data">
       <ion-item ion-item>
         <ion-thumbnail item-left>
@@ -54,7 +54,7 @@
         <ion-icon name="sad"></ion-icon>
         COMPLAINT
       </button>
-      <button ion-button color="secondary">
+      <button ion-button color="secondary" >
         <ion-icon name="happy"></ion-icon>
         COMPLETED
       </button>
@@ -66,15 +66,24 @@
     
 
     <ion-list *ngSwitchCase="'Complaint'">
-          <ion-item-sliding>
+    <ion-refresher (ionRefresh)="doRefreshComplain($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Tarik untuk memperbaharui"
+      refreshingSpinner="circles"
+      refreshingText="Memperbaharui...">
+    </ion-refresher-content>
+    </ion-refresher>
+    <ion-item-sliding *ngFor="let item of data">
       <ion-item>
         <ion-thumbnail item-left>
           <img src="../assets/arga.png">
         </ion-thumbnail>
-        <h2><b>Toko ABC</b></h2>
-        <h5>Jenis: Pakaian Biasa</h5>
-        <h5>Layanan: 5 jam</h5>
-        <h5>Harga: Rp 5000</h5>
+        <h2><b>{{item.NamaToko}}</b></h2>
+        <h5>Layanan: {{item.jenis_layanan}}</h5>
+        <h5>Berat : {{item.berat}} kg </h5>
+        <h5>Harga: {{item.harga_total}}</h5>
+        <h5>Waktu Pemesanan: {{item.created_at}}</h5>
       </ion-item>
     <ion-item-options side="right">
       <button ion-button color="secondary">
@@ -83,24 +92,6 @@
       </button>
     </ion-item-options>
     </ion-item-sliding>
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="assets/img/thumbnail-duckling-2.jpg">
-        </ion-thumbnail>
-        <h2>Huey</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="assets/img/thumbnail-duckling-3.jpg">
-        </ion-thumbnail>
-        <h2>Dewey</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="assets/img/thumbnail-duckling-4.jpg">
-        </ion-thumbnail>
-        <h2>Louie</h2>
-      </ion-item>
     </ion-list>
   </div>
 </ion-content>
