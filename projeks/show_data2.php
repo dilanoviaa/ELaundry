@@ -1,6 +1,8 @@
 <?php
     include 'db_connect.php';  
-    $sql=mysqli_query($connect,"SELECT * FROM datalaundry");
+    $user_id = $_GET['user_id'];
+    $status = "inprogress";
+    $sql=mysqli_query($connect,"SELECT * FROM transaksi WHERE user_id='$user_id' AND status='$status'");
     $result_set = array();
     while($result =mysqli_fetch_assoc($sql)){
         $result_set[]=$result;
